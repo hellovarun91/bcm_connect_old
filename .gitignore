@@ -4,7 +4,6 @@
 /node_modules
 /.pnp
 .pnp.js
-package-lock.json
 
 # tauri
 /src-tauri/target
@@ -27,3 +26,6 @@ package-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# win_build server deps
+win_build/server/node_modules
