@@ -1,6 +1,6 @@
 // src/components/commons/Frame.jsx
 import React from "react";
-import FrameSVG from "./frame-1.gif";
+import FrameSVG from "./frame-1.webp";
 import FrameStatic from "./frame-1-static.png";
 import SinglePlayGif from "./SinglePlayGif";
 // Import MagicBento CSS for styles

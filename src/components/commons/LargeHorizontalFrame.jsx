@@ -1,5 +1,5 @@
 import React from "react";
-import largeHorizontalFrameIcon from "../../assets/HUD-summary-2026.gif";
+import largeHorizontalFrameIcon from "../../assets/HUD-summary-2026.webp";
 import SinglePlayGif from "./SinglePlayGif";
 import PropTypes from 'prop-types';
 import { getTypographyPreset } from '../../constants/typography';

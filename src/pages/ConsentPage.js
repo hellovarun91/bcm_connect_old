@@ -48,7 +48,7 @@ const ConsentPage = () => {
         
         // Prepare list of assets to preload
         const assetsToPreload = [
-          '/assets/canvasBG.png',
+          '/assets/canvasBG.webp',
           '/assets/animations/Buttons/TOPUI.json',
           '/assets/image.png',
           '/assets/EY_Logo_Beam_STFWC_Stacked_RGB_White_Yellow_EN 2.svg'

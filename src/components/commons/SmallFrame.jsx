@@ -1,5 +1,5 @@
 import React from "react";
-import SmallFrameSVG from "./small-frame.gif";
+import SmallFrameSVG from "./small-frame.webp";
 import SmallFrameStatic from "./small-frame-static.png";
 import SinglePlayGif from "./SinglePlayGif";
 import PropTypes from 'prop-types';

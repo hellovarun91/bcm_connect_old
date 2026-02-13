@@ -1,5 +1,5 @@
 import React from "react";
-import largeFrameIcon from "./large-frame.gif";
+import largeFrameIcon from "./large-frame.webp";
 import largeFrameStatic from "./large-frame-static.png";
 import SinglePlayGif from "./SinglePlayGif";
 import PropTypes from 'prop-types';

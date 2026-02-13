@@ -1,9 +1,12 @@
 name: Build Desktop App
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version tag (e.g. v1.0.0)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -98,8 +101,8 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: build-${{ github.run_number }}
-          name: App Build ${{ github.run_number }}
+          tag_name: ${{ github.event.inputs.version || format('build-{0}', github.run_number) }}
+          name: ${{ github.event.inputs.version || format('Build {0}', github.run_number) }}
           draft: false
           prerelease: false
           files: |

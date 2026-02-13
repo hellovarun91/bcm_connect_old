@@ -1,5 +1,5 @@
 import React from "react";
-import mediumHorizontalFrameIcon from "./medium-horizontal-frame.gif";
+import mediumHorizontalFrameIcon from "./medium-horizontal-frame.webp";
 import SinglePlayGif from "./SinglePlayGif";
 import PropTypes from 'prop-types';
 // Import typography constants
