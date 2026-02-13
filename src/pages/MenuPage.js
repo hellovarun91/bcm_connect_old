@@ -612,7 +612,7 @@ const MenuPage = () => {
   }, [activeFlowIcon]);
 
   useTuio({
-    triggerTagId: TUIO_CONFIG.SMART_MOBILITY_TAG_ID,
+    triggerTagIds: TUIO_CONFIG.SMART_MOBILITY_TAG_IDS,
     onObjectPlaced: handleTuioCarPlaced,
     onObjectRemoved: handleTuioCarRemoved,
   });

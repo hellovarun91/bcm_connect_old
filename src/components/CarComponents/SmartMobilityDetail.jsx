@@ -22,9 +22,9 @@ const SmartMobilityDetail = ({ object, onOptionSelect, defaultShowOptions = true
   const [activeComponent, setActiveComponent] = useState(null);
   const isInitializedRef = useRef(false);
 
-  // TUIO rotation tracking — physical tag 23 rotates to select badges
+  // TUIO rotation tracking — physical tags (simulator: 2, InteractiveScape: 23)
   const { isObjectPresent: tuioPresent, angle: tuioAngle } = useTuioRotation({
-    triggerTagId: TUIO_CONFIG.SMART_MOBILITY_TAG_ID,
+    triggerTagIds: TUIO_CONFIG.SMART_MOBILITY_TAG_IDS,
   });
 
   // Map TUIO rotation angle to highlighted option AND auto-select after dwell

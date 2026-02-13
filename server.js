@@ -3,8 +3,29 @@ const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 const dgram = require('dgram');
-const osc = require('osc-min');
+
+// Load external config from build/config.json or public/config.json
+let externalConfig = {};
+const configPaths = [
+  path.join(__dirname, 'build', 'config.json'),
+  path.join(__dirname, 'public', 'config.json'),
+];
+for (const cfgPath of configPaths) {
+  try {
+    externalConfig = JSON.parse(fs.readFileSync(cfgPath, 'utf8'));
+    console.log(`[Config] Loaded ${cfgPath}`);
+    break;
+  } catch (_) { /* try next */ }
+}
+
+
+// osc-min is ESM-only; load it via dynamic import
+let osc;
+(async () => {
+  osc = await import('osc-min');
+})();
 
 // Create Express app
 const app = express();
@@ -79,7 +100,7 @@ io.on('connection', (socket) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 5001;
+const PORT = externalConfig.serverPort || process.env.PORT || 5002;
 server.listen(PORT, () => {
   console.log(`WebSocket server running on port ${PORT}`);
 });
@@ -88,23 +109,28 @@ server.listen(PORT, () => {
 // TUIO Object Recognition (InteractiveScape)
 // Listens for TUIO/OSC messages on UDP port 3333
 // ────────────────────────────────────────────
-const TUIO_PORT = 3333;
+const TUIO_PORT = externalConfig.tuioUdpPort || 3333;
 const tuioObjects = new Map(); // sessionId → { symbolId, x, y, angle }
 
 const udpSocket = dgram.createSocket('udp4');
 
 udpSocket.on('message', (msg) => {
+  if (!osc) { console.log('[TUIO] osc not loaded yet, skipping message'); return; }
   try {
     const oscData = osc.fromBuffer(msg);
 
-    // Handle OSC bundles (TUIO sends bundles)
+    // Debug: log every incoming message type
     if (oscData.oscType === 'bundle') {
-      oscData.elements.forEach((element) => handleTuioMessage(element));
+      oscData.elements.forEach((element) => {
+        console.log(`[TUIO] Bundle element: ${element.address} ${element.args?.[0]?.value || ''}`);
+        handleTuioMessage(element);
+      });
     } else {
+      console.log(`[TUIO] Message: ${oscData.address} ${oscData.args?.[0]?.value || ''}`);
       handleTuioMessage(oscData);
     }
   } catch (err) {
-    // Silently ignore non-OSC packets
+    console.log(`[TUIO] Parse error: ${err.message} (raw ${msg.length} bytes)`);
   }
 });
 

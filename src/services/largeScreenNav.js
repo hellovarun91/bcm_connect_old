@@ -1,6 +1,8 @@
 import { io } from 'socket.io-client';
+import { getConfig } from '../config/loadConfig';
 
-const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'http://localhost:5001';
+const config = getConfig();
+const SOCKET_URL = config?.socketUrl || process.env.REACT_APP_SOCKET_URL || 'http://localhost:5002';
 
 const socket = io(SOCKET_URL, {
   transports: ['websocket'],

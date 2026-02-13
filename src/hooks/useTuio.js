@@ -5,12 +5,12 @@ import socket from '../services/largeScreenNav';
  * Hook for receiving TUIO object recognition events via Socket.IO.
  *
  * @param {object} options
- * @param {number|null} options.triggerTagId - Only fire onObjectPlaced for this tag ID (null = any)
+ * @param {number[]|null} options.triggerTagIds - Only fire for these tag IDs (null = any)
  * @param {function} options.onObjectPlaced - Called when a matching tag is first placed on the table
  * @param {function} options.onObjectRemoved - Called when a matching tag is removed
  * @returns {{ objects: object, isObjectPresent: boolean }}
  */
-export default function useTuio({ triggerTagId = null, onObjectPlaced, onObjectRemoved } = {}) {
+export default function useTuio({ triggerTagIds = null, onObjectPlaced, onObjectRemoved } = {}) {
   const [objects, setObjects] = useState({});
   const [isObjectPresent, setIsObjectPresent] = useState(false);
   const onPlacedRef = useRef(onObjectPlaced);
@@ -21,11 +21,13 @@ export default function useTuio({ triggerTagId = null, onObjectPlaced, onObjectR
   useEffect(() => { onRemovedRef.current = onObjectRemoved; }, [onObjectRemoved]);
 
   useEffect(() => {
+    const matches = (symbolId) =>
+      triggerTagIds === null || triggerTagIds.includes(symbolId);
+
     const handleObject = (data) => {
       if (!data.isNew) return; // Only react to first detection
 
-      const matches = triggerTagId === null || data.symbolId === triggerTagId;
-      if (matches) {
+      if (matches(data.symbolId)) {
         setIsObjectPresent(true);
         setObjects((prev) => ({ ...prev, [data.sessionId]: data }));
         onPlacedRef.current?.(data);
@@ -33,13 +35,12 @@ export default function useTuio({ triggerTagId = null, onObjectPlaced, onObjectR
     };
 
     const handleRemove = (data) => {
-      const matches = triggerTagId === null || data.symbolId === triggerTagId;
-      if (matches) {
+      if (matches(data.symbolId)) {
         setObjects((prev) => {
           const next = { ...prev };
           delete next[data.sessionId];
           const stillPresent = Object.values(next).some(
-            (o) => triggerTagId === null || o.symbolId === triggerTagId
+            (o) => matches(o.symbolId)
           );
           setIsObjectPresent(stillPresent);
           return next;
@@ -57,7 +58,7 @@ export default function useTuio({ triggerTagId = null, onObjectPlaced, onObjectR
           }
         }
         const stillPresent = Object.values(next).some(
-          (o) => triggerTagId === null || o.symbolId === triggerTagId
+          (o) => matches(o.symbolId)
         );
         setIsObjectPresent(stillPresent);
         return next;
@@ -73,7 +74,7 @@ export default function useTuio({ triggerTagId = null, onObjectPlaced, onObjectR
       socket.off('tuio:remove', handleRemove);
       socket.off('tuio:alive', handleAlive);
     };
-  }, [triggerTagId]);
+  }, [triggerTagIds]);
 
   return { objects, isObjectPresent };
 }

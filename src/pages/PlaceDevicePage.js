@@ -25,9 +25,9 @@ const PlaceDevicePage = () => {
     });
   }, [navigate]);
 
-  // Listen for TUIO tag 22 — auto-navigate when placed on the table
+  // Listen for TUIO trigger tags (simulator: 1, InteractiveScape: 22)
   useTuio({
-    triggerTagId: TUIO_CONFIG.TRIGGER_TAG_ID,
+    triggerTagIds: TUIO_CONFIG.TRIGGER_TAG_IDS,
     onObjectPlaced: handleTuioPlaced,
   });
 

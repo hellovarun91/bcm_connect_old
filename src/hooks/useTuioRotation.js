@@ -8,10 +8,10 @@ import socket from '../services/largeScreenNav';
  * EVERY `tuio:object` event so it can track angle changes in real time.
  *
  * @param {object} options
- * @param {number|null} options.triggerTagId - Only track objects with this symbol ID (null = any)
+ * @param {number[]|null} options.triggerTagIds - Only track objects with these symbol IDs (null = any)
  * @returns {{ isObjectPresent: boolean, angle: number, symbolId: number|null }}
  */
-export default function useTuioRotation({ triggerTagId = null } = {}) {
+export default function useTuioRotation({ triggerTagIds = null } = {}) {
   const [isObjectPresent, setIsObjectPresent] = useState(false);
   const [angle, setAngle] = useState(0);
   const [symbolId, setSymbolId] = useState(null);
@@ -20,9 +20,11 @@ export default function useTuioRotation({ triggerTagId = null } = {}) {
   const sessionsRef = useRef(new Map()); // sessionId → { symbolId, angle }
 
   useEffect(() => {
+    const matches = (sid) =>
+      triggerTagIds === null || triggerTagIds.includes(sid);
+
     const handleObject = (data) => {
-      const matches = triggerTagId === null || data.symbolId === triggerTagId;
-      if (!matches) return;
+      if (!matches(data.symbolId)) return;
 
       sessionsRef.current.set(data.sessionId, {
         symbolId: data.symbolId,
@@ -35,13 +37,12 @@ export default function useTuioRotation({ triggerTagId = null } = {}) {
     };
 
     const handleRemove = (data) => {
-      const matches = triggerTagId === null || data.symbolId === triggerTagId;
-      if (!matches) return;
+      if (!matches(data.symbolId)) return;
 
       sessionsRef.current.delete(data.sessionId);
 
       const remaining = Array.from(sessionsRef.current.values()).filter(
-        (o) => triggerTagId === null || o.symbolId === triggerTagId
+        (o) => matches(o.symbolId)
       );
 
       if (remaining.length === 0) {
@@ -67,7 +68,7 @@ export default function useTuioRotation({ triggerTagId = null } = {}) {
 
       if (changed) {
         const remaining = Array.from(sessionsRef.current.values()).filter(
-          (o) => triggerTagId === null || o.symbolId === triggerTagId
+          (o) => matches(o.symbolId)
         );
 
         if (remaining.length === 0) {
@@ -87,7 +88,7 @@ export default function useTuioRotation({ triggerTagId = null } = {}) {
       socket.off('tuio:remove', handleRemove);
       socket.off('tuio:alive', handleAlive);
     };
-  }, [triggerTagId]);
+  }, [triggerTagIds]);
 
   return { isObjectPresent, angle, symbolId };
 }

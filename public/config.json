@@ -1,0 +1,25 @@
+{
+  "socketUrl": "http://localhost:5002",
+  "tuioUdpPort": 3333,
+  "serverPort": 5002,
+  "tagMap": {
+    "1": "trigger",
+    "2": "smart-mobility",
+    "3": "petrol",
+    "4": "coffee",
+    "5": "shopping",
+    "6": "healthcare",
+    "22": "trigger",
+    "23": "smart-mobility",
+    "24": "petrol",
+    "25": "coffee",
+    "26": "shopping",
+    "27": "healthcare"
+  },
+  "triggerTagIds": [1, 22],
+  "smartMobilityTagIds": [2, 23],
+  "petrolTagIds": [3, 24],
+  "coffeeTagIds": [4, 25],
+  "shoppingTagIds": [5, 26],
+  "healthcareTagIds": [6, 27]
+}
