@@ -41,8 +41,8 @@ const healthCareLabel = '/assets/iconlabels/healthcare-label.gif';
 // Static PNG versions
 const carLabelStatic = '/assets/iconlabels/static/car-label-static.png';
 const coffeeLabelStatic = '/assets/iconlabels/static/coffee-label-static.png';
-const petrolLabelStatic = '/assets/iconlabels/newLabels/petrol-label.gif';
-const shoppingLabelStatic = '/assets/iconlabels/newLabels/shopping-label.gif';
+const petrolLabelStatic = '/assets/iconlabels/static/petrolLabel-static.png';
+const shoppingLabelStatic = '/assets/iconlabels/static/shopping-label-static.png';
 const healthCareLabelStatic = '/assets/iconlabels/static/healthcare-label-static.png';
 
 const MenuPage = () => {
