@@ -80,90 +80,69 @@ const HealthCareNewLayout = ({ animationCompleted, onProceed, onTriggerIntro }) 
   };
 
   return (
-    <motion.div 
+    <motion.div
       variants={containerVariants}
       initial="hidden"
       animate="show"
       style={{
-        position: 'relative',
-        left: '50%',
-        top:"4%",
-        transform: 'translateX(-50%)',
-        width: '100%',
-        maxWidth: '1400px',
+        position: 'absolute',
+        inset: 0,
         zIndex: 10,
-        padding: '2rem 0'
+        pointerEvents: 'none'
       }}
     >
 
-
-      {/* Two Column Layout - hidden when summary is shown */}
+      {/* Health Cost Planner - viewport centered */}
       {!showSummary && !isPlayingAnimations && (
-        <motion.div
-          variants={containerVariants}
-          style={{
-            display: 'grid',
-            gap: '2rem',
-            padding: '2rem 0',
-            width: '100%',
-            alignItems: 'flex-start',
-            justifyContent: 'flex-start',
-            gridTemplateColumns: 'repeat(2, 1fr )',
-            height:"100%"
-       
-          }}
-        >
-          {/* Left Side - Health Cost Planner */}
-          <motion.div variants={componentVariants}>
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          pointerEvents: 'none',
+        }}>
+          <motion.div
+            variants={componentVariants}
+            style={{ pointerEvents: 'auto' }}
+          >
             <HealthCostPlanner />
           </motion.div>
-
-          {/* Right Side - Flexible Credit AI */}
-          <motion.div 
-            variants={componentVariants}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              height:"100%",
-              
-            }}
-          >
-            <FlexibleCreditAI onBegin={onProceed} />
-          </motion.div>
-        </motion.div>
+        </div>
       )}
 
-      {/* View Summary Button - Fixed at bottom */}
+      {/* View Summary Button */}
       {showSummaryButton && !showSummary && !isPlayingAnimations && (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          style={{ 
-            position: 'fixed',
-            bottom: '2rem',
-            left: '45%',
-            transform: 'translateX(-50%)',
+          style={{
+            position: 'absolute',
+            bottom: '80px',
+            left: 0,
+            right: 0,
             display: 'flex',
             justifyContent: 'center',
-            zIndex: 100
+            zIndex: 100,
+            pointerEvents: 'none'
           }}
         >
           <button
             type="button"
             onClick={handleViewSummaryClick}
             style={{
-              width: '12rem',
-              height: '2.5rem',
+              width: '192px',
+              height: '40px',
               background: 'rgba(255, 255, 255, 0.25)',
               border: '1px solid rgba(255, 255, 255, 0.25)',
               color: '#fff',
-              borderRadius: '0.5rem',
-              fontSize: '0.85rem',
+              borderRadius: '8px',
+              fontSize: '14px',
               fontWeight: 200,
               cursor: 'pointer',
-              boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)'
+              boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)',
+              pointerEvents: 'auto'
             }}
           >
             View Summary

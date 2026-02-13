@@ -27,8 +27,10 @@ const SmartMobilityDetail = ({ object, onOptionSelect, defaultShowOptions = true
     triggerTagId: TUIO_CONFIG.SMART_MOBILITY_TAG_ID,
   });
 
-  // Map TUIO rotation angle to highlighted option
+  // Map TUIO rotation angle to highlighted option AND auto-select after dwell
   const options = object?.options || [];
+  const tuioSelectTimerRef = useRef(null);
+
   useEffect(() => {
     if (!tuioPresent || !showOptions || options.length === 0) return;
     // Map 0–2π to option index
@@ -38,8 +40,22 @@ const SmartMobilityDetail = ({ object, onOptionSelect, defaultShowOptions = true
     const label = options[Math.min(idx, options.length - 1)]?.label;
     if (label && label !== hoveredOptionLabel) {
       setHoveredOptionLabel(label);
+
+      // Auto-select badge after 500ms dwell on the same option
+      if (tuioSelectTimerRef.current) clearTimeout(tuioSelectTimerRef.current);
+      tuioSelectTimerRef.current = setTimeout(() => {
+        console.log(`[TUIO] Auto-selecting badge: ${label}`);
+        handleOptionClick(label);
+      }, 500);
     }
   }, [tuioPresent, tuioAngle, showOptions, options, hoveredOptionLabel]);
+
+  // Cleanup dwell timer
+  useEffect(() => {
+    return () => {
+      if (tuioSelectTimerRef.current) clearTimeout(tuioSelectTimerRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     // Ensure proper initialization on mount
@@ -124,26 +140,14 @@ const SmartMobilityDetail = ({ object, onOptionSelect, defaultShowOptions = true
     })
   };
 
-  // Column animation variants
+  // Column animation variants — simple fade for the active component panel
   const columnVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        duration: 1.2,
-        staggerChildren: 0.3
-      }
-    }
-  };
-
-  // Mask animation variants
-  const maskVariants = {
-    hidden: { scaleY: 0, originY: 0 },
-    visible: {
-      scaleY: 1,
-      transition: {
-        duration: 1.2,
-        ease: 'circOut'
+        duration: 0.5,
+        ease: 'easeOut'
       }
     }
   };
@@ -314,8 +318,8 @@ const SmartMobilityDetail = ({ object, onOptionSelect, defaultShowOptions = true
       {/* ACTIVE COMPONENT PANEL */}
       <AnimatePresence>
         {activeComponent && (
-          <motion.div 
-            className="active-component-container" 
+          <motion.div
+            className="active-component-container"
             initial="hidden"
             animate="visible"
             exit="hidden"
@@ -323,19 +327,11 @@ const SmartMobilityDetail = ({ object, onOptionSelect, defaultShowOptions = true
             style={{
               maxHeight: '80vh',
               zIndex: 30,
-              overflow: 'hidden'
-            }}>
-
-          <motion.div 
-            variants={maskVariants}
-            style={{ 
+              overflow: 'hidden',
               padding: '0.5rem',
-              height: '100%',
               borderRadius: '8px'
-            }}
-          >
+            }}>
             {renderActiveComponent()}
-          </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

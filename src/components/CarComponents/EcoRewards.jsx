@@ -177,8 +177,8 @@ const EcoRewards = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.3
+        staggerChildren: 0.1,
+        delayChildren: 0.2
       }
     }
   };
@@ -189,27 +189,27 @@ const EcoRewards = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
-        staggerChildren: 0.15
+        duration: 0.5,
+        staggerChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 10 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 }
+      transition: { duration: 0.5 }
     }
   };
 
   const chartVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
+    hidden: { opacity: 0, scale: 0.9 },
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.9, ease: 'easeOut', delay: 0.4 }
+      transition: { duration: 0.7, ease: 'easeOut' }
     }
   };
 
@@ -217,9 +217,9 @@ const EcoRewards = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { 
-        duration: 1.2,
-        delay: 0.5
+      transition: {
+        duration: 0.8,
+        delay: 0.3
       }
     }
   };

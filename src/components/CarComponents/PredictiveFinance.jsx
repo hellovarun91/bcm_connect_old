@@ -6,16 +6,17 @@ import data from '../../data/components/data.json';
 const PredictiveContainer = styled(motion.div)`
    background-color: rgba(5, 2, 10, 0.7);
   color: #ffffff;
-  padding: 1.2rem;
+  padding: 1.25rem;
   border-radius: 0.5rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   flex-direction: column;
-  width: 90%;
-  max-width: 250px;
-  margin: 0 auto;
+  width: 48rem;
+  margin: 0;
   height: 26rem;
   justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
 `;
 
 const SectionTitle = styled(motion.h3)`
@@ -102,7 +103,7 @@ const PredictiveFinance = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 15 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,

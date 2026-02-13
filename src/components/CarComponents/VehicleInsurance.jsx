@@ -76,8 +76,8 @@ const VehicleInsurance = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.3
+        staggerChildren: 0.1,
+        delayChildren: 0.2
       }
     }
   };
@@ -88,34 +88,31 @@ const VehicleInsurance = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
-        staggerChildren: 0.15
+        duration: 0.5,
+        staggerChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: i => ({
+    hidden: { opacity: 0, y: 20 },
+    visible: {
       opacity: 1,
       y: 0,
-      transition: { 
-        duration: 0.6,
-        delay: i * 0.08
-      }
-    })
+      transition: { duration: 0.5 }
+    }
   };
 
   const iconVariants = {
     hidden: { scale: 0, opacity: 0 },
-    visible: { 
-      scale: 1, 
+    visible: {
+      scale: 1,
       opacity: 1,
-      transition: { 
+      transition: {
         type: 'spring',
         stiffness: 450,
         damping: 18,
-        delay: 0.5
+        delay: 0.3
       }
     }
   };

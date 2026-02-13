@@ -148,15 +148,12 @@ const DrivingInsights = () => {
   ];
 
   return (
-    <motion.div
+    <InsightsContainer
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      style={{ 
-        width: '100%', height: '100%' ,
-      }}
+      style={{ border: '2px solid #FACC15'}}
     >
-    <InsightsContainer style={{ border: '2px solid #FACC15'}} >
       <ChartContainer style={{ gridColumn: '1 / 2', gridRow: '1 / 2' }}>
         <DrivingCostChart />
       </ChartContainer>
@@ -305,7 +302,6 @@ const DrivingInsights = () => {
           </motion.div>
         </DataTile>
     </InsightsContainer>
-    </motion.div>
   );
 }
 

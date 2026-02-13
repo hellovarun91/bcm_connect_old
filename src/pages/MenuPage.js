@@ -30,6 +30,8 @@ import hospitalLinesGif from '../data/animations/HOPSITAL-Line-2026.gif';
 import { playButtonSound, playFrameSound } from '../utils/soundUtils';
 import navigationService from '../services/NavigationService';
 import SinglePlayGif from '../components/commons/SinglePlayGif';
+import useTuio from '../hooks/useTuio';
+import { TUIO_CONFIG } from '../config/tuio';
 
 // GIF sources
 const carLabel = '/assets/iconlabels/car-label.gif';
@@ -571,6 +573,39 @@ const MenuPage = () => {
     );
   };
 
+  // TUIO: tag 2 placed → open car sub menu, tag 2 removed → close & reset
+  const handleTuioCarPlaced = React.useCallback(() => {
+    console.log('[TUIO] Tag 2 placed — opening SmartMobility sub menu');
+    if (iconClickCounts.car === 0) {
+      handleCarIconClick();
+    }
+  }, [iconClickCounts.car]);
+
+  const handleTuioCarRemoved = React.useCallback(() => {
+    console.log('[TUIO] Tag 2 removed — closing & resetting SmartMobility');
+    // Close menu and fully reset so next placement reopens it
+    if (activeFlowIcon === 'car') {
+      // Reset click count so placing again will reopen
+      setIconClickCounts(prev => ({ ...prev, car: 0 }));
+      setActiveFlowIcon(null);
+      setEnabledIcon(null);
+      showAllIcons();
+      closeAllPanels();
+      setDetailClosed(true);
+      setHasPlayedCarIntro(false);
+      setHasStartedFlow(false);
+      setContextActiveIcon(null);
+      setJourneyStage('car');
+      clearFlowTimer();
+    }
+  }, [activeFlowIcon]);
+
+  useTuio({
+    triggerTagId: TUIO_CONFIG.SMART_MOBILITY_TAG_ID,
+    onObjectPlaced: handleTuioCarPlaced,
+    onObjectRemoved: handleTuioCarRemoved,
+  });
+
   const warmUpVideo = async (src) => {
     try {
       const v = document.createElement('video');
@@ -908,6 +943,18 @@ const MenuPage = () => {
         resetGlowEffectState();
       }
     };
+  }, []);
+
+  // TEMP: Press 'H' to toggle healthcare frame for quick testing
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'h' || e.key === 'H') {
+        setShowHealthCareComponents(prev => !prev);
+        console.log('[DEV] Toggled healthcare frame');
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   // Preload all split videos when component mounts
@@ -1700,7 +1747,7 @@ const MenuPage = () => {
       {showHealthCareComponents && (
         <div
           style={{
-            position: 'fixed',
+            position: 'absolute',
             left: '0',
             top: '0',
             width: '100%',
