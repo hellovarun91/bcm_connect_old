@@ -32,7 +32,8 @@
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1",
     "three": "^0.181.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yaml": "^2.8.2"
   },
   "scripts": {
     "client": "react-scripts start",
