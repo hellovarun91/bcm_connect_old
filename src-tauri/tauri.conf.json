@@ -1,0 +1,31 @@
+{
+  "productName": "DISPLAX",
+  "version": "0.1.0",
+  "identifier": "com.displax",
+  "build": {
+    "frontendDist": "../build",
+    "devUrl": "http://localhost:3000",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "DISPLAX",
+        "width": 1920,
+        "height": 1080,
+        "resizable": true,
+        "fullscreen": false
+      }
+    ]
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["msi", "nsis", "dmg", "app"],
+    "icon": [
+      "icons/icon.ico",
+      "icons/icon.png",
+      "icons/icon.icns"
+    ]
+  }
+}

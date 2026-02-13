@@ -1,0 +1,144 @@
+{
+  "vehicleFinanceOverview": {
+    "autoLoanSnapshot": {
+      "title": "Auto Loan Snapshot",
+      "balance": "$17,400",
+      "emi": "$289/month",
+      "interestRate": "11.2",
+      "nextPayment": "28,Nov 2025"
+    },
+    "loanTimeline": {
+      "title": "Loan Timeline",
+      "projectedPayoffDate": "28,Nov 2025",
+      "percentage": 30
+    },
+    "subscriptionsPanel": {
+      "title": "Subscriptions Panel",
+      "subscriptions": [
+        {
+          "label": "EV connectivity package",
+          "checked": true
+        },
+        {
+          "label": "Navigation system",
+          "checked": true
+        },
+        {
+          "label": "Safety assist/Autopilot",
+          "checked": true
+        },
+        {
+          "label": "28,Nov 2025",
+          "checked": true
+        }
+      ]
+    }
+  },
+  "drivingInsights": {
+    "monthlyDrivingCost": {
+      "title": "Monthly Driving Cost",
+      "chartData": {
+        "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        "datasets": [
+          {
+            "label": "Oct, 2025",
+            "data": [150, 155, 160, 165, 170, 175, 180, 185, 190, 195, 200, 205],
+            "borderColor": "rgba(255, 99, 132, 0.5)",
+            "backgroundColor": "rgba(255, 99, 132, 0.2)"
+          },
+          {
+            "label": "Nov, 2025",
+            "data": [120, 127, 134, 141, 148, 155, 162, 169, 176, 183, 190, 197],
+            "borderColor": "rgba(54, 162, 235, 0.5)",
+            "backgroundColor": "rgba(54, 162, 235, 0.2)"
+          }
+        ]
+      }
+    },
+    "routeHeatmap": {
+      "title": "Route Heatmap Visualization",
+      "spendPerRoute": "USD 1,100",
+      "savingsVsGas": "12"
+    },
+    "energyEfficiency": {
+      "title": "Energy Efficiency Meter",
+      "value": "3.9 mi/kWh",
+      "subValue": "Above average"
+    },
+    "ecoScore": {
+      "title": "Eco Score Tile",
+      "score": "92/100",
+      "subValue": "Better than 85% of drivers in your region"
+    }
+  },
+  "predictiveFinance": {
+    "title": "Predictive Finance AI",
+    "predictions": [
+      {
+        "label": "Future Vehicle Value (1yr)",
+        "value": "$14,500"
+      },
+      {
+        "label": "Optimal Sell Time",
+        "value": "July 2026"
+      },
+      {
+        "label": "Maintenance Cost Projection",
+        "value": "$800/year"
+      }
+    ]
+  },
+  "vehicleInsurance": {
+    "title": "Vehicle Insurance",
+    "policyDetails": {
+      "provider": "AutoGuard Insurance",
+      "policyNumber": "AGI-987654",
+      "premium": "$120/month",
+      "renewalDate": "15, Dec 2025"
+    },
+    "coverageBreakdown": {
+      "title": "Coverage Breakdown",
+      "liability": {
+        "label": "Liability",
+        "value": "$100k / $300k"
+      },
+      "collision": {
+        "label": "Collision",
+        "value": "Active"
+      },
+      "comprehensive": {
+        "label": "Comprehensive",
+        "value": "Active"
+      },
+      "personalInjury": {
+        "label": "Personal Injury Protection (PIP)",
+        "value": "Active"
+      },
+      "deductibles": {
+        "label": "Deductibles & limits",
+        "value": "N/A"
+      }
+    },
+    "stateCompliance": {
+      "title": "State Compliance Indicator",
+      "minimumRequirements": "California Minimum Requirements:",
+      "status": "Fully Covered",
+      "stateRules": "State Rules"
+    },
+    "telematics": {
+      "title": "Pay-Per-Mile & Telematics",
+      "liveRate": {
+        "label": "Live rate",
+        "value": "$0.07/mile"
+      },
+      "mileage": {
+        "label": "Mileage this month",
+        "value": "428 miles"
+      },
+      "safetyScore": {
+        "label": "Safe Driving Score:",
+        "value": "87"
+      }
+    }
+  }
+}

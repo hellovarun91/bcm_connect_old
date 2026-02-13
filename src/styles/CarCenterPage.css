@@ -1,0 +1,308 @@
+/* CarCenterPage Styles */
+
+.car-center-page {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+/* Background */
+.car-center-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.car-center-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+}
+
+/* Overlay */
+.car-center-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(20, 30, 40, 0.5) 50%, rgba(0, 0, 0, 0.4) 100%);
+  z-index: 1;
+}
+
+/* Content container */
+.car-center-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.75rem;
+}
+
+/* Car center icon container */
+.car-center-icon-container {
+  position: relative;
+  width: 18.75rem;
+  height: 18.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Glow effect */
+.car-center-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8.75rem;
+  height: 8.75rem;
+  border-radius: 50%;
+  border: 0.125rem solid rgba(6, 182, 212, 0.4);
+  animation: car-pulse 2s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes car-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+    border-color: rgba(6, 182, 212, 0.4);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.3;
+    border-color: rgba(6, 182, 212, 0.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+    border-color: rgba(6, 182, 212, 0.4);
+  }
+}
+
+/* Car icon */
+.car-center-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(6, 182, 212, 0.4), rgba(6, 182, 212, 0.1));
+  cursor: pointer;
+  z-index: 5;
+  transition: all 0.3s ease;
+  border: 0.125rem solid rgba(6, 182, 212, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.car-center-icon:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  box-shadow: 0 0 1.875rem rgba(6, 182, 212, 0.6);
+}
+
+/* Car inner circle */
+.car-center-inner {
+  width: 6.25rem;
+  height: 6.25rem;
+  border-radius: 50%;
+  background: rgba(6, 182, 212, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.0625rem solid rgba(6, 182, 212, 0.4);
+}
+
+/* Car image */
+.car-center-img {
+  width: 3.75rem;
+  height: 3.75rem;
+  object-fit: contain;
+}
+
+/* Options container */
+.car-options-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Option items */
+.car-option-item {
+  position: absolute;
+  width: 3.75rem;
+  height: 3.75rem;
+  background: rgba(6, 182, 212, 0.15);
+  border: 0.0625rem solid rgba(6, 182, 212, 0.6);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+  font-size: 0.6875rem;
+  color: #06b6d4;
+  text-align: center;
+  padding: 0.25rem;
+  box-sizing: border-box;
+}
+
+.car-option-item:hover {
+  background: rgba(6, 182, 212, 0.25);
+  box-shadow: 0 0 0.9375rem rgba(6, 182, 212, 0.6);
+  transform: translate(var(--option-x), var(--option-y)) scale(1.1);
+}
+
+.car-option-item.appearing {
+  animation: optionAppear 0.4s ease-out forwards;
+  animation-delay: var(--option-delay);
+}
+
+.car-option-item.disappearing {
+  animation: optionDisappear 0.4s ease-out forwards;
+  animation-delay: var(--option-delay);
+}
+
+@keyframes optionAppear {
+  from {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: translate(var(--option-x), var(--option-y)) scale(1);
+  }
+}
+
+@keyframes optionDisappear {
+  from {
+    opacity: 1;
+    transform: translate(var(--option-x), var(--option-y)) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.5);
+  }
+}
+
+/* Option label */
+.car-option-label {
+  font-weight: 600;
+  line-height: 1.2;
+  display: block;
+}
+
+/* Continue button */
+.car-center-button {
+  padding: 0.875rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #06b6d4;
+  background: transparent;
+  border: 0.125rem solid #06b6d4;
+  border-radius: 3.125rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.03125rem;
+}
+
+.car-center-button:hover {
+  background: rgba(6, 182, 212, 0.1);
+  box-shadow: 0 0 1.25rem rgba(6, 182, 212, 0.5);
+  transform: translateY(-0.125rem);
+}
+
+.car-center-button:active {
+  transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 48rem) {
+  .car-center-content {
+    gap: 2.5rem;
+  }
+
+  .car-center-icon-container {
+    width: 15.625rem;
+    height: 15.625rem;
+  }
+
+  .car-center-icon {
+    width: 6.25rem;
+    height: 6.25rem;
+  }
+
+  .car-center-inner {
+    width: 5.3125rem;
+    height: 5.3125rem;
+  }
+
+  .car-center-img {
+    width: 3.125rem;
+    height: 3.125rem;
+  }
+
+  .car-center-button {
+    padding: 0.75rem 2rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .car-center-content {
+    gap: 1.875rem;
+  }
+
+  .car-center-icon-container {
+    width: 12.5rem;
+    height: 12.5rem;
+  }
+
+  .car-center-icon {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .car-center-inner {
+    width: 4.375rem;
+    height: 4.375rem;
+  }
+
+  .car-center-img {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .car-option-item {
+    width: 3.125rem;
+    height: 3.125rem;
+    font-size: 0.5625rem;
+  }
+
+  .car-center-button {
+    padding: 0.625rem 1.75rem;
+    font-size: 0.8125rem;
+  }
+}

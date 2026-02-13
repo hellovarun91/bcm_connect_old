@@ -1,0 +1,160 @@
+@keyframes popUp {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.object-detail-container {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.object-detail-wrapper {
+  position: relative;
+}
+
+.object-detail-icon {
+  position: relative;
+  width: 3.75rem;
+  height: 3.75rem;
+  margin: 0 auto;
+  cursor: pointer;
+  z-index: 25;
+}
+
+.object-detail-image {
+
+  filter: drop-shadow(0 0 0.75rem rgba(255, 255, 255, 0.9)) drop-shadow(0 0 1.5rem rgba(255, 255, 255, 0.7));
+}
+
+.object-detail-options-circle {
+  width: 18.75rem;
+  height: 18.75rem;
+  margin-top: 1.25rem;
+}
+
+.object-detail-option-badge {
+  position: absolute;
+  padding: 0.625rem 0.9375rem;
+  border-radius: 1.25rem;
+  background: rgba(120, 120, 120, 0.7);
+  border: 0.125rem solid rgba(6, 182, 212, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.object-detail-option-badge:hover {
+  background: rgba(26, 138, 138, 0.45);
+  border-color: #60B3D8;
+  box-shadow: 0 0 1.5625rem rgba(96, 179, 216, 0.5);
+  transform: scale(1.1);
+}
+
+.category-page {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+}
+
+.category-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.category-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.animation-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.category-title {
+  font-size: 2.5rem;
+  color: #00d4ff;
+  margin: 0;
+  text-align: center;
+  text-shadow: 0 0 0.625rem rgba(0, 212, 255, 0.5);
+}
+
+/* Object Detail View positioning */
+.object-detail-container {
+  z-index: 10;
+}
+
+/* Detailed Modal positioning */
+.detailed-modal {
+  z-index: 20;
+}
+
+/* Place next device button styling */
+.place-device-button {
+  position: fixed;
+  bottom: 4.5rem;
+  transform: translateX(-50%);
+  z-index: 30;
+  padding: 1rem;
+  max-width: 18.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: rgba(80, 80, 80, 0.7);
+  border: none;
+  border-radius: 0.5rem;
+  backdrop-filter: blur(0.3125rem);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  letter-spacing: 0.0625rem;
+}
+
+.place-device-button:hover {
+  background-color: rgba(100, 100, 100, 0.8);
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.category-button {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+
+  background: transparent;
+  border: 0.125rem solid #06b6d4;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-button:hover {
+  background: rgba(6, 182, 212, 0.1);
+  box-shadow: 0 0 1.25rem rgba(6, 182, 212, 0.5);
+  transform: translateY(-0.125rem);
+}
+

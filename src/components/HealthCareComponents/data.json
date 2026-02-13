@@ -1,0 +1,98 @@
+{
+  "CostCoverage": {
+    "title": "Cost & Coverage Overview",
+    "Column1": "Estimated Cost Breakdown",
+    "data1": [
+      { "label": "Blood Test", "value": "$40" },
+      { "label": "Lipid Panel", "value": "$65" },
+      { "label": "Thyroid Panel", "value": "$55" }
+    ],
+    "summary1": "Total estimated cost:",
+    "Column2": "Insurance Coverage Preview",
+    "data2": [
+      { "label": "Insurance Covers", "value": "$120" },
+      { "label": "Out-of-pocket", "value": "$40" }
+    ],
+    "summary2": "Deductible Progress Bar: You’ve met 68% of your annual deductible.",
+    "Payment Mode": [
+      "BankWallet",
+      "Split Payment"
+    ]
+  },
+  "ProjectedHealth": {
+    "title": "Projected Health Corpus Value Planning",
+    "sliders": [
+      {
+        "label": "Monthly Contribution",
+        "value": "$700",
+        "min": 0,
+        "max": 1000,
+        "defaultValue": 700
+      },
+      {
+        "label": "Select Duration",
+        "value": "20 Years",
+        "min": 0,
+        "max": 40,
+        "defaultValue": 20
+      },
+      {
+        "label": "Plan Type",
+        "value": "Balanced",
+        "options": ["Conservative", "Balanced", "Aggressive"]
+      }
+    ],
+    "projectionSummary": "Projected Health Corpus Value",
+    "projectionValue": "$320,000 in 20 years",
+    "projectionDetails": [
+      "Projected return rate: 6.2% annually",
+      "Inflation-adjusted value (@2.5%): $204,000",
+      "Coverage gap closed: ✔"
+    ]
+  },
+  "LongTermHealth": {
+    "title": "Long-Term Health Cost Planner (20-Year Forecast)",
+    "sections": [
+      {
+        "title": "Predicted Cost of Health",
+        "subtitle": "Your predicted healthcare expenses over the next 20 years:",
+        "value": "USD 22,000",
+        "details": [
+          "(uses inflation + history + projected utilization)"
+        ]
+        
+      },
+      {
+        "title": "Current Health Insurance Coverage",
+        "subtitle": "Your current health insurance coverage",
+        "value": "USD 12,000",
+        "details": [
+          "Annual deductible remaining: $2,000",
+          "Co-pay: 6%",
+          "Out-of-pocket max: $2,000"
+        ]
+      }
+    ],
+    "warning": {
+      "icon": "warning",
+      "text": "Projected coverage gap in future years",
+      "value": "USD 12,000"
+    }
+  },
+  "HSA": {
+    "title": "HSA (Health Savings Account) Eligibility & Benefits",
+    "headerleft": "You qualify for an HSA.",
+    "contributionLimits": {
+      "title": "Contribution Suggestion",
+      "subtitle": "Add $100/month to reduce taxable income"
+    },
+    "headerright": "FSA (Flexible Spending Account) Options",
+    "fsaOptions": {
+      "title": "Current FSA balance: $320",
+      "subtitle": "Use by end of year to avoid loss"
+    },
+    "headerright2": "Health-Linked Savings Goals",
+    "healthlinked": "Annual Wellness Budget: You are 22% under budget this year.",
+    "subtitle": "Use by end of year to avoid loss"
+  }
+}

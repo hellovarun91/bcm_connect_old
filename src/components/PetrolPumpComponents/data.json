@@ -1,0 +1,44 @@
+{
+  "coffeeOffer": {
+    "title": "You have an offer on coffee",
+    "description": "You have an offer on coffee"
+  },
+  "chargingSession": {
+    "title": "Charging Session Overview",
+    "description": "What’s happening right now at the charger",
+    "arrays": [
+      { "label": "Current Speed", "value": "120 kW" },
+      { "label": "Time Remaining", "value": "12 minutes" },
+      { "label": "Session Cost So Far", "value": "$9.60" },
+      { "label": "Battery Status", "value": "" }
+    ]
+  },
+  "chargingHistory": {
+    "title": "Charging History",
+    "description": "Past sessions & spend trend",
+    "keyPoints": [
+      "Past 5 charging sessions",
+      "Average cost graph",
+      "Total carbon savings MTD"
+    ]
+  },
+  "costAndBilling": {
+    "title": "Cost & Billing",
+    "description": "Payment breakdown linked to bank wallet",
+    "keyPointsTitle": "kWh × price breakdown",
+    "keyPoints": [
+      "kWh × price breakdown",
+      "Peak/off-peak time pricing",
+      "Animated “Payment Timeline” ring",
+      "Predicted end-of-session cost"
+    ]
+  },
+  "esgImpact": {
+    "title": "ESG / Carbon Impact",
+    "description": "How charging contributes to green banking rewards",
+    "flowSteps": [
+      { "label": "CO₂ Saved This Session", "type": "1.4 kg" },
+      { "label": "Charging Green Score", "type": "85" }
+    ]
+  }
+}

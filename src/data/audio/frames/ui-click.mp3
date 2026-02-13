@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Notification: Policy: URL Filtering</title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: 0 auto;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            color: #333333;
+        }
+
+        h1 {
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            padding-top: 0px;
+            color: #2970A6;
+        }
+
+        h2 {
+            font-family: Arial, Helvetica, sans-serif;
+            text-decoration: none;
+            font-size: 13px;
+            padding-top: 0px;
+            color: #ff6666;
+        }
+
+        h3 {
+            font-family: Arial, Helvetica, sans-serif;
+            text-decoration: none;
+            font-size: 13px;
+            padding-top: 0px;
+            color: #1959EC;
+        }
+
+        a:link {
+            color: #2970A6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #2970A6;
+            text-decoration: underline;
+        }
+
+        p.buttonlink {
+            margin-bottom: 24px;
+        }
+
+        .copyright {
+            font-size: 12px;
+            color: #666666;
+            margin: 5px 5px 0px 30px;
+
+        }
+
+        .details {
+            font-size: 14px;
+            color: #969696;
+            border: none;
+            padding: 20px 20px 20px 20px;
+            margin: 0px 10px 10px 35px;
+        }
+
+        .shadow {
+            border: 3px solid #9f9f9f;
+            padding: 10px 25px 10px 25px;
+            margin: 10px 35px 0px 30px;
+            /*background-color: #ffffff;
+*/
+            width: 600px;
+            margin: 0 auto;
+
+            -moz-box-shadow: 3px 3px 3px #cccccc;
+            -webkit-box-shadow: 3px 3px 3px #cccccc;
+            box-shadow: 3px 3px 3px #cccccc;
+            /* For IE 8 */
+            -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=135, Color='cccccc')";
+            /* For IE 5.5 - 7 */
+            filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=135, Color='cccccc');
+        }
+
+        .logo {
+            border: none;
+            margin: 5px 5px 0px 30px;
+            width: 65px;
+            height: 30px;
+        }
+
+        .url {
+            word-break: break-all;
+            white-space: normal;
+        }
+
+        .ticketlink {
+            word-break: break-all;
+            white-space: normal;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .container:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+            background-image: url('https://lxappscjbprd001.lowes.com/ISG Logo.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            vertical-align: top;
+            opacity: 0.3;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        ?
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="content">
+
+
+            <div class="shadow">
+                <div class="logo">
+                    <img src="https://lxappscjbprd001.lowes.com/LowesLogo.svg">
+                </div>
+                <p>&nbsp;</p>
+                <h1>Web Site Blocked</h1>
+
+
+                <p>
+                    Based on Lowe's <a
+                        href="https://urldefense.proofpoint.com/v2/url?u=https-3A__lowes.sharepoint.com_sites_itc_isg_itpolicies_Information-2520Technology-2520-2520Security-2520Policy-2520Library_AUP-2520-2D-2520Acceptable-2520Use-2520Policy.pdf&amp;d=DwMGAg&amp;c=V9IgWpI5PvzTw83UyHGVSoW3Uc1MFWe5J8PTfkrzVSo&amp;r=9HWKljFDXxu3ZzgIxCPjN9fA0xLAHEt6Kf_N0CevjPU&amp;m=Xa_1EtOkvYLstE4B-MRD44k0_F-3eQjShhD6VLI8wfI&amp;s=CgNf0g_wvwsgIDf8J1B1wz6CDjU06rW4pk925WXOYgU&amp;e="
+                        target="blank">Acceptable Use Policy</a>, access to the web site below has been blocked because
+                    the web category is not allowed.<br><br>
+
+                    <b>User:
+                        4887458@lowes.com </b>
+                    <br>
+
+                <div class="url">
+                    <b>Website:
+                        assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3 </b>
+                </div>
+                <br>
+
+                <b>Category:
+                    shareware-and-freeware </b>
+                <br>
+                <br>
+
+                <div id="raise-request-email">
+                    If you believe this site should be unblocked please email the Security Operations Center <br>
+                    by copying above information to <a href="mailto: isg-soc@lowes.com">isg-soc@lowes.com</a> or by
+                    clicking here <a
+                        href="mailto:isg-soc@lowes.com?subject=Web Unblock Request&body=Please unblock the below website.%0D%0DURL: %0D%0DBusiness Justification: %0D%0DScreenshot: %0D">clicking
+                        here</a>.
+
+                </div>
+                <div class="userform" id="raise-request-form">
+
+                    <form id="formElem">
+                        <p>If you believe this site should be unblocked by the Security Operations Center, <br>then
+                            please provide your business justifications below and submit a request:<br>
+                            <textarea cols="50" rows="3" name="Business Justification"></textarea><br>
+                            <!-- limit to 50? avaliable lines ?-->
+                            <!-- to replace samples data before loading on FW e.g. name="user" value="<user />">   -->
+                            <input type=hidden name="url"
+                                value="assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3">
+                            <!-- every possible valid URL charater-->
+                            <input type=hidden name="user" value="4887458@lowes.com">
+                            <input type=hidden name="category" value="shareware-and-freeware">
+                        </p>
+                    </form>
+
+                    <button id="submit">Submit Request for SOC review</button>
+                </div>
+
+                <div id="response"></div>
+
+                <br><br>
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+    </div>
+</body>
+
+<script>
+	//version 1.1
+    port_url = 'https://kang.demisto.live/instance/execute/unblock_request'
+
+    var form = document.querySelector("#formElem");
+
+    
+    var _url = form.querySelector('input[name="url"]').value
+    var _user = form.querySelector('input[name="user"]').value
+    var _category = form.querySelector('input[name="category"]').value
+
+    if (_user.includes("@lowes.com") || _user.includes("@store.lowes.com")) {  //Remove 10.64.37.11 in prod, add  || _user.includes("10.64.37.11") in dev
+        document.getElementById("raise-request-email").remove();
+		submit.onclick = async (e) => {
+		
+			var _comments = form.querySelector('textarea[name="Business Justification"]').value
+			data = {
+				name: "Unblock request from user " + _user + " for category " + _category,  // this becomes default incident name, but can be controlled on XSAOR incident creation also.
+				raw_json: {
+					comments: _comments,
+					url: _url,
+					user: _user,
+					category: _category
+				}
+			}
+
+			var response = fetch(port_url, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data)
+			}
+
+			).then((response) => {
+				if (response.ok) {
+					return response.json();
+				} else {
+					throw new Error('Something went wrong creating incident');
+					document.querySelector("#response").innerHTML = 'Request for creating incident has failed to reach server. If you believe this site should be unblocked please email the Security Operations Center by copying above information to isg-soc@lowes.com';
+					document.querySelector('#response').style.color = 'red';
+				}
+			})
+				.then((responseJson) => {
+					if (responseJson == "") {
+						document.getElementById('submit').style.visibility = 'hidden'; // hide button to prevent submitting multiple times without a page refresh.
+						document.querySelector("#response").innerHTML = 'This site has been requested to be unblocked by another user.  Please check again in 30 minutes.';
+						document.querySelector('#response').style.color = 'green';
+					} else {
+						document.getElementById('submit').style.visibility = 'hidden'; // hide button to prevent submitting multiple times without a page refresh.
+						document.querySelector("#response").innerHTML = 'Incident ID: ' + responseJson + ' has been created. We will confirm via email if your request has been approved or denied within 24 hours.';
+						document.querySelector('#response').style.color = 'green';
+						}
+				})
+				.catch((error) => {
+					console.log(error)
+					document.getElementById('submit').style.visibility = 'hidden';
+					document.querySelector("#response").innerHTML = 'Request for creating incident has failed to reach server. If you believe this site should be unblocked please email the Security Operations Center by copying above information to isg-soc@lowes.com.';
+					document.querySelector('#response').style.color = 'red';
+				});
+
+		};
+    } else {
+        document.getElementById("raise-request-form").remove();
+    };
+
+</script>
+
+
+</html>

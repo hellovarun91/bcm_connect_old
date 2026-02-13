@@ -1,0 +1,217 @@
+/* Eco Rewards Dashboard Styles */
+
+.eco-rewards-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  backdrop-filter: blur(4px);
+}
+
+.eco-rewards-container {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  background: linear-gradient(135deg, rgba(26, 32, 44, 0.95), rgba(45, 55, 72, 0.95));
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(0, 255, 255, 0.1);
+  animation: slideIn 0.3s ease;
+  overflow-y: auto;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header */
+.eco-rewards-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(0, 255, 255, 0.2);
+}
+
+.eco-rewards-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  background: linear-gradient(90deg, #00FFFF, #00A4D4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.eco-rewards-close {
+  background: none;
+  border: none;
+  color: #00FFFF;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.eco-rewards-close:hover {
+  color: #00A4D4;
+  transform: scale(1.1);
+}
+
+.eco-rewards-close svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Rewards Grid */
+.eco-rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.eco-reward-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: rgba(0, 255, 255, 0.05);
+  border: 2px solid rgba(0, 255, 255, 0.2);
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.eco-reward-card:hover {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: rgba(0, 255, 255, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+}
+
+/* Icon Wrapper */
+.eco-reward-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  background: rgba(0, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.eco-reward-card:hover .eco-reward-icon-wrapper {
+  background: rgba(0, 255, 255, 0.15);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.eco-reward-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* Label */
+.eco-reward-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 8px 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Value */
+.eco-reward-value {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+}
+
+/* Footer Stats */
+.eco-rewards-footer {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
+  border-top: 2px solid rgba(0, 255, 255, 0.2);
+}
+
+.eco-rewards-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.eco-rewards-stat-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.eco-rewards-stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #00FFFF;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .eco-rewards-container {
+    width: 95%;
+    padding: 25px;
+  }
+
+  .eco-rewards-header h1 {
+    font-size: 22px;
+  }
+
+  .eco-rewards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .eco-reward-card {
+    padding: 15px;
+  }
+
+  .eco-reward-icon-wrapper {
+    width: 70px;
+    height: 70px;
+  }
+
+  .eco-reward-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .eco-rewards-footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

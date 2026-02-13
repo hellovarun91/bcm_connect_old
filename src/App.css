@@ -1,0 +1,511 @@
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================
+   ObjectLabel component UI
+   ========================= */
+.object-badge { display: inline-flex; align-items: center; position: relative; height: 3.5rem; pointer-events: none; }
+.object-badge-icon { position: relative; width: 3.5rem; height: 3.5rem; border-radius: 9999px; background: linear-gradient(135deg, #00FFFF 0%, #00A4D4 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 0.375rem 1rem rgba(0, 164, 212, 0.35); }
+.object-badge-icon img { width: 1.5rem; height: 1.5rem; filter: invert(1) brightness(1.25); }
+.object-badge-ring { position: absolute; inset: -0.1875rem; border-radius: 9999px; border: 0.125rem solid rgba(0,255,255,0.9); box-shadow: 0 0 0.625rem rgba(0,255,255,0.5), inset 0 0 0.375rem rgba(255,255,255,0.15); pointer-events: none; }
+.object-badge-pill { height: 3rem; margin-left: -0.5rem; padding: 0 1.125rem 0 1.625rem; display: flex; align-items: center; border-radius: 9999px; background: linear-gradient(90deg, #00FFFF -0.12%, #00A4D4 99.88%); color: #fff; box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.25); position: relative; }
+.object-badge-pill:before { content: ""; position: absolute; left: 0.625rem; top: 50%; transform: translateY(-50%); width: 1.75rem; height: 1.75rem; border-radius: 9999px; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.2), rgba(255,255,255,0)); filter: blur(0.0125rem); }
+.object-badge-text { font-weight: 700; font-size: 0.9375rem; white-space: nowrap; letter-spacing: 0.00625rem; text-shadow: 0 0.0625rem 0.125rem rgba(0,0,0,0.35); }
+
+/* Scale the badge a bit on small screens without breaking layout */
+@media (max-width: 48rem) {
+  .object-badge { transform: scale(0.85); transform-origin: left center; height: 3rem; }
+  .object-badge-icon { width: 3rem; height: 3rem; }
+  .object-badge-pill { height: 2.625rem; padding: 0 0.875rem 0 1.375rem; }
+  .object-badge-text { font-size: 0.8125rem; }
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Interstate', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #1a202c;
+  touch-action: none; /* Prevent browser handling of touch gestures */
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  will-change: transform; /* Hint to browser to optimize */
+}
+
+/* Mobile responsive */
+@media (max-width: 48rem) {
+  .App {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+canvas {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+/* Center car styles */
+.car-center-container {
+  position: relative;
+  width: 18.75rem;
+  height: 18.75rem;
+}
+
+/* Portrait mode (width < height) - mobile phones */
+@media (max-aspect-ratio: 1/1) {
+  .car-center-container {
+    width: 12.5rem;
+    height: 12.5rem;
+  }
+  
+  .car-center-icon {
+    width: 5rem !important;
+    height: 5rem !important;
+  }
+  
+  .car-center-inner {
+    width: 4.375rem !important;
+    height: 4.375rem !important;
+  }
+  
+  .car-center-img {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+  }
+  
+  .car-center-glow {
+    top: -0.625rem !important;
+    left: -0.625rem !important;
+    right: -0.625rem !important;
+    bottom: -0.625rem !important;
+  }
+}
+
+.car-center-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(6, 182, 212, 0.4), rgba(6, 182, 212, 0.1));
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  border: 0.125rem solid rgba(6, 182, 212, 0.6);
+}
+
+.car-center-inner {
+  width: 6.25rem;
+  height: 6.25rem;
+  border-radius: 50%;
+  background: rgba(6, 182, 212, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.0625rem solid rgba(6, 182, 212, 0.5);
+}
+
+.car-center-img {
+  width: 3.75rem;
+  height: 3.75rem;
+  filter: invert(1) brightness(1.5);
+}
+
+.car-center-glow {
+  position: absolute;
+  top: -0.9375rem;
+  left: -0.9375rem;
+  right: -0.9375rem;
+  bottom: -0.9375rem;
+  border-radius: 50%;
+  border: 0.125rem solid rgba(6, 182, 212, 0.4);
+  animation: car-pulse 2s infinite;
+}
+
+@keyframes car-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+    border-color: rgba(6, 182, 212, 0.4);
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.3;
+    border-color: rgba(6, 182, 212, 0.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+    border-color: rgba(6, 182, 212, 0.4);
+  }
+}
+
+/* Pulse animation using box-shadow for visible pulsing effect */
+@keyframes objectPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7), 0 0 10px rgba(6, 182, 212, 0.3), inset 0 0 10px rgba(6, 182, 212, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(6, 182, 212, 0.2), 0 0 20px rgba(6, 182, 212, 0.6), inset 0 0 15px rgba(6, 182, 212, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7), 0 0 10px rgba(6, 182, 212, 0.3), inset 0 0 10px rgba(6, 182, 212, 0.1);
+  }
+}
+
+.object-pulse {
+  animation: objectPulse 2s infinite ease-in-out;
+  animation-delay: 0.6s; /* Start after object-appear finishes */
+}
+
+/* Alternative pulse using border for more visibility */
+@keyframes objectPulseBorder {
+  0% {
+    border: 2px solid rgba(6, 182, 212, 0.3);
+    box-shadow: 0 0 5px rgba(6, 182, 212, 0.3);
+  }
+  50% {
+    border: 2px solid rgba(6, 182, 212, 0.8);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
+  }
+  100% {
+    border: 2px solid rgba(6, 182, 212, 0.3);
+    box-shadow: 0 0 5px rgba(6, 182, 212, 0.3);
+  }
+}
+
+.object-pulse-border {
+  animation: objectPulseBorder 2s infinite ease-in-out;
+  animation-delay: 0.6s;
+}
+
+/* Animation for option appearance and disappearance - optimized for performance */
+@keyframes optionAppear {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); left: 0; top: 0; }
+  70% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes optionDisappear {
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  30% { opacity: 0.8; transform: translate(-50%, -50%) scale(0.9); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); left: 0; top: 0; }
+}
+
+@keyframes fadeInScale {
+  0% { 
+    opacity: 0; 
+    transform: scale(0.8);
+  }
+  100% { 
+    opacity: 1; 
+    transform: scale(1);
+  }
+}
+
+@keyframes objectAppear {
+  0% { 
+    opacity: 0; 
+    transform: scale(0.3) translateY(20px);
+  }
+  60% { 
+    opacity: 0.8; 
+    transform: scale(1.1) translateY(-5px);
+  }
+  100% { 
+    opacity: 1; 
+    transform: scale(1) translateY(0);
+  }
+}
+
+.object-appear {
+  animation: objectAppear 0.6s ease-out forwards;
+}
+
+@keyframes pulse-attention {
+  0% { 
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4);
+  }
+  70% { 
+    transform: scale(1.05);
+    box-shadow: 0 0 0 15px rgba(255, 0, 0, 0);
+  }
+  100% { 
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+  }
+}
+
+/* Option item styles */
+.option-item {
+  width: 3.125rem;
+  height: 3.125rem;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0.625rem rgba(103, 232, 249, 0.5);
+  will-change: transform, opacity, left, top; /* Hint to browser to optimize */
+  pointer-events: auto; /* Make clickable */
+}
+
+.option-item.appearing {
+  animation: optionAppear 0.5s forwards;
+  animation-delay: var(--option-delay);
+  opacity: 0; /* Start invisible for animation */
+}
+
+.option-item.disappearing {
+  animation: optionDisappear 0.3s forwards;
+  animation-delay: var(--option-delay);
+}
+
+/* Option label styles */
+.option-label {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0.3125rem;
+  pointer-events: none; /* Prevent clicks on labels */
+}
+
+/* Options container */
+.options-container {
+  pointer-events: none; /* Let clicks pass through the container */
+}
+
+/* Tailwind-like utility classes */
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.absolute.bottom-8.right-10 {
+  z-index: 50;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-grab {
+  cursor: grab;
+}
+
+.cursor-grabbing {
+  cursor: grabbing;
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.text-white {
+  color: white;
+}
+
+.text-gray-400 {
+  color: #9ca3af;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.shadow-lg {
+  box-shadow: 0 0.625rem 0.9375rem -0.1875rem rgba(0, 0, 0, 0.1), 0 0.25rem 0.375rem -0.125rem rgba(0, 0, 0, 0.05);
+}
+
+.z-20 {
+  z-index: 20;
+}
+
+.transform {
+  transform: translateX(-50%);
+}
+
+
+
+.bottom-8 {
+  bottom: 2rem;
+}
+
+.right-10 {
+  right: 2.5rem;
+}
+
+.top-0 {
+  top: 0;
+}
+
+.h-20 {
+  height: 5rem;
+}
+
+/* Half menu at top - centered horizontally */
+[class*="left-1/2"] {
+  left: 50%;
+  z-index: 50;
+}
+
+/* Label UI for draggable objects */
+.object-label { display: flex; align-items: center; gap: 0.5rem; }
+.object-label-anchor { top: -187%; left: 67%; pointer-events: none; z-index: 15; }
+.object-label-connector { display: flex; align-items: center; }
+.object-label-dot { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: #67e8f9; box-shadow: 0 0 0.5rem rgba(103,232,249,0.8); border: 0.125rem solid #22d3ee; }
+.object-label-line { display: block; width: 1.5rem; height: 0.125rem; background: linear-gradient(90deg, #38bdf8 0%, #34d399 100%); border-radius: 0.125rem; margin-left: 0.25rem; }
+.object-label-pill { display: flex; align-items: center; gap: 0.625rem; background: linear-gradient(90deg, rgba(16,185,214,0.85), rgba(45,212,191,0.85)); color: #fff; padding: 0.5rem 0.875rem 0.5rem 0.5rem; border-radius: 9999px; box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.25); backdrop-filter: blur(0.25rem); }
+.object-label-icon { width: 1.75rem; height: 1.75rem; border-radius: 9999px; border: 0.125rem solid rgba(255,255,255,0.8); display: flex; align-items: center; justify-content: center; background: radial-gradient(ellipse at center, rgba(255,255,255,0.15), rgba(255,255,255,0.05)); box-shadow: 0 0 0.625rem rgba(56,189,248,0.8); }
+.object-label-text { font-weight: 600; white-space: nowrap; }
+
+/* SVG-based label styles */
+.object-label-svg-wrapper { position: relative; width: 23rem; height: auto; }
+.object-label-svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 0.375rem 1rem rgba(0,0,0,0.35)); position: relative; z-index: 0; }
+.object-label-text-svg { position: absolute; top: 23%; left: 60%; right: 2%; transform: translateY(-50%); color: #fff; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.0125rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: 0 0.0625rem 0.125rem rgba(0,0,0,0.5); z-index: 2; width: 12rem; }
+/* Cover the original SVG text area so only dynamic label is visible */
+.object-label-cover { position: absolute; top: 50%; left: 5rem; right: 0.375rem; height: 3.5rem; transform: translateY(-50%); border-radius: 9999px; background: linear-gradient(90deg, rgba(0,255,255,1) 0%, rgba(0,164,212,1) 100%); z-index: 1; box-shadow: inset 0 0 1.125rem rgba(0, 164, 212, 0.4); }
+.object-label-text-icon{position: absolute; top: 23%; left: 40%; height: 25%; width: 11%; transform: translateY(-50%); color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: 0 0.0625rem 0.125rem rgba(0,0,0,0.5); z-index: 2;}
+/* For mobile devices */
+@media (max-width: 48rem) {
+  .option-item {
+    width: 2.5rem; 
+    height: 2.5rem;
+  }
+  
+  /* Responsive options panel */
+  .fixed {
+    width: 90vw !important;
+    max-width: 90vw !important;
+    left: 5vw !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+ 
+    overflow-y: auto !important;
+  }
+  /* Scale down label on small screens */
+  .object-label-svg-wrapper { width: 14.375rem; }
+  .object-label-text-svg { left: 40%; right: 8%; font-size: 0.8125rem; }
+  .object-label-cover { left: 5rem; right: 0.375rem; height: 3rem; }
+  .object-label-anchor { top: -60%; left: 62%; }
+}
+
+/* Portrait mode adjustments */
+@media (max-aspect-ratio: 1/1) {
+  .option-item {
+    width: 2.1875rem !important;
+    height: 2.1875rem !important;
+    font-size: 0.625rem !important;
+  }
+  
+  .option-label {
+    font-size: 0.625rem !important;
+    padding: 0.125rem 0.25rem !important;
+  }
+  
+  /* Reduce spacing for portrait mode */
+  .absolute {
+    font-size: 0.75rem;
+  }
+  
+  /* Help tooltip */
+  .absolute.top-4 {
+    top: 0.125rem !important;
+    font-size: 0.6875rem !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+  
+  /* Help button */
+  .absolute.bottom-4 {
+    bottom: 0.125rem !important;
+    padding: 0.375rem !important;
+  }
+  
+  .absolute.bottom-4 svg {
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+  
+  /* EY Logo */
+  .absolute.bottom-4.right-4 {
+    width: 1rem !important;
+  }
+  
+  .absolute.bottom-8.right-10 {
+    bottom: 0.5rem !important;
+    right: 0.625rem !important;
+  }
+}

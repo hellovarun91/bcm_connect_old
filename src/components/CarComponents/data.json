@@ -1,0 +1,83 @@
+{
+  "drivingInsights": {
+    "monthlyDrivingCost": {
+      "title": "Monthly Driving Cost",
+      "chartData": {
+        "labels": ["Oct", "Nov"],
+        "datasets": [
+          {
+            "label": "Monthly Cost",
+            "data": [250, 320]
+          }
+        ]
+      },
+      "yAxisScale": ["$150", "$300", "$450", "$600", "$750"]
+    },
+    "routeHeatmap": {
+      "title": "Route Heatmap Visualization",
+      "spendPerRoute": "$1,100",
+      "savingsVsGasPowered": 10
+    },
+    "energyEfficiency": {
+      "title": "Energy Efficiency Meter",
+      "value": "3.9 mi/kWh",
+      "status": "Above average"
+    },
+    "ecoScore": {
+      "title": "Eco Score",
+      "score": "92/100",
+      "comparison": "Better than 85% of drivers in your region"
+    }
+  },
+  "vehicleFinanceOverview": {
+    "autoLoanSnapshot": {
+      "title": "Auto Loan Snapshot",
+      "balance": "$17,400",
+      "emi": "$289/month",
+      "interestRate": "11.2%",
+      "nextPayment": "28 Nov, 2025"
+    },
+    "loanTimeline": {
+      "title": "Loan Timeline",
+      "projectedPayoffDate": "28 Nov, 2025",
+      "completionRange": "1-100%"
+    }
+  },
+  "vehicleInsurance": {
+    "title": "Vehicle Insurance",
+    "coverageBreakdown": {
+      "liability": "$100k / $300k",
+      "collision": "Active",
+      "comprehensive": "Active",
+      "personalInjuryProtection": "Active",
+      "deductiblesAndLimits": "N/A"
+    },
+    "stateCompliance": {
+      "state": "California",
+      "status": "Fully Covered"
+    },
+    "payPerMileTelematics": {
+      "liveRate": "$0.07/mile",
+      "mileageThisMonth": "428 miles",
+      "safeDrivingScore": 87
+    }
+  },
+  "ecoRewards": {
+    "co2Saved": {
+      "title": "CO₂ Saved Meter",
+      "value": "82 kg",
+      "period": "This month"
+    },
+    "greenCredits": {
+      "balance": 2
+    },
+    "impactMap": {
+      "view": "Map View"
+    }
+  },
+  "predictiveFinance": {
+    "title": "Predictive Finance AI",
+    "monthlySavings": "$42",
+    "insight": "You’re on track to save for your next EV upgrade."
+  }
+}

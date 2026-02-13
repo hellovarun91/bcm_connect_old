@@ -1,0 +1,41 @@
+{
+  "DailyFinancialSnapshot": {
+    "title": "Daily Financial Snapshot",
+    "description": "Overview of your financial activity",
+    "buttonText": "View Details",
+    "details": [
+      { "label": "Total Spend Today", "value": "$1,245" },
+      { "label": "Upcoming Payments", "value": "$32,300" },
+      { "label": "Smart Payments Completed", "value": "Yes" }
+    ],
+    "summaryTitle": "Weekly Financial Summary",
+    "summaryStats": [
+      { "label": "Average Daily Spend", "value": "$1,320" },
+      { "label": "Weekly Total", "value": "$9,240" },
+      { "label": "Savings Rate", "value": "18%" },
+      { "label": "Budget Status", "value": "On Track" }
+    ]
+  },
+  "AiInsights": {
+    "title": "AI Insights & Long-Term Wellness",
+    "description": "",
+    "details": [
+      { "label": "Smart Advice Given Today", "value": "12" },
+      { "label": "Long-Term Projection Snapshot", "value": "10 years" },
+      { "label": "Status", "value": "Updated" }
+    ]
+  },
+  "Rewards": {
+    "title": "Rewards, ESG & Benefits Summary",
+    "description": "Your environmental and financial rewards summary",
+    "buttonText": "View All Rewards",
+    "details": [
+      { "label": "Green Credits Earned", "value": "+2" },
+      { "label": "Café Loyalty Points", "value": "+5" },
+      { "label": "Bank Multiplier", "value": "+20%" },
+      { "label": "Total Rewards", "value": "9" },
+      { "label": "Carbon Saved Today", "value": "1.4Kg" },
+      { "label": "Cumulative CO₂ This Month", "value": "42Kg" }
+    ]
+  }
+}

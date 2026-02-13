@@ -1,0 +1,38 @@
+{
+  "OrderSummary": {
+    "title": "Order Summary",
+    "description": "Shows what Jay bought",
+    "arrays": [
+      { "label": "Oat Latte", "value": "$3.20" },
+      { "label": "Estimated prep time", "value": "5 minutes" },
+      { "label": "Cafe Details", "value": "" }
+    ]
+  },
+  "PaymentDetails": {
+    "title": "Micro-Payment Details",
+    "description": "How the coffee is paid",
+    "keyPoints": [
+      "Auto-payment confirmation",
+      "Payment source: Bank Wallet",
+      "Timestamped transaction",
+      "Coffee-only spend/Tip option"
+    ]
+  },
+  "LoyaltyRewards": {
+    "title": "Loyalty & Rewards",
+    "description": "Café + bank-linked loyalty",
+    "arrays": [
+      { "label": "Reward Points", "value": "+5 earned" },
+      { "label": "Progress bar to next free drink", "value": "12 minutes" },
+      { "label": "Bank-linked reward boost", "value": "Your bank multiplied rewards x1.2" }
+    ]
+  },
+  "VisitHistory": {
+    "title": "Visit History",
+    "description": "Previous visits & spend",
+    "keyPoints": [
+      "Timeline view of Jay’s last café visits",
+      "Total café spend"
+    ]
+  }
+}

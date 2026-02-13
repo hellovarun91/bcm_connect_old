@@ -1,0 +1,38 @@
+{
+  "UnifiedPaymentSummary": {
+    "title": "Unified Payment Summary",
+    "arrays": [
+      { "label": "Charging", "value": "$9.60" },
+      { "label": "Café", "value": "$3.20" },
+      { "label": "Total", "value": "$12.80" },
+      { "label": "One unified Transaction ID", "value": "5 minutes" },
+      { "label": "Settlement via", "value": "Jay’s Bank Wallet" },
+      { "label": "Timestamp and location", "value": "EV Hub - Fremont, CA" }
+    ]
+  },
+  "RewardsESGOverview": {
+    "title": "Rewards & ESG Overview",
+    "arrays": [
+      { "label": "EV Charging", "value": "+2 Green Credits" },
+      { "label": "Café Visit", "value": "+5 Loyalty Points" },
+      { "label": "Bank Multiplier", "value": "+20% (Your bank boosted your café rewards)" },
+      { "label": "Total Unified Reward", "value": "9 Points" }
+    ]
+  },
+  "ImpactInsights": {
+    "title": "Impact & Insights",
+    "arrays": [
+      { "label": "CO₂ Saved", "value": "+5 earned" },
+      { "label": "Charging Efficiency Score", "value": "12 minutes" },
+      { "label": "Sustainable Choice Impact", "value": "You’re greener than 72% of drivers today." },
+      { "label": "Projected CO₂ savings this month", "value": "Your bank multiplied rewards x1.2" },
+      { "label": "Projected monthly energy savings", "value": "" }
+    ],
+    "keyTitle": "",
+    "keyPoints": [
+      "Green-blue “energy pulse” animation from EV Token.",
+      "Leaf particle system forming rings around the tile.",
+      "Mini ESG meter on the bottom."
+    ]
+  }
+}

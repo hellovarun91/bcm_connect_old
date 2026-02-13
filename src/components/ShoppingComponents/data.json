@@ -1,0 +1,98 @@
+{
+  "ProductShowcase": {
+    "title": "Product Showcase"
+    
+  },
+  "PriceBreakDown": {
+    "title": "Price Breakdown",
+    "arrays": [
+      { "label": "Base Price", "value": "$2,000" },
+      { "label": "Taxes & fees", "value": "+$120" },
+      { "label": "Total", "value": "$2,120" }
+    ]
+   
+  },
+  "SmartBankSuggestion": {
+    "title": "Smart Bank Suggestion",
+    "keyPoints":[
+      "✨ Based on your spending this month, you qualify for flexible payment options."
+    ]
+  },
+  "InventoryAndDelivery": {
+    "title": "Inventory & Delivery", 
+    "keyPoints":[
+      "Available in-store",
+      "Delivery in 2 days"
+    ]
+  },
+  "ProjectedSpendImpact": {
+    "title": "Projected Spend Impact", 
+    "description":"Shows impact of this BNPL on Jay’s monthly budget",
+    "keyPoints":[
+      "low",
+      "medium",
+      "high"
+    ]
+  },
+  "BankIntelligentInsights": {
+    "title": "Bank Intelligent Insights", 
+    "blocks":[
+      "Choosing 12 months saves you $45 in interest.",
+      "Your bank recommends 12–18 month plan for optimal cash flow.",
+      "Your credit score remains unaffected with this plan."
+    ]
+  },
+  "CreditApprovalPanel": {
+    "title": "Credit Approval Panel", 
+    "description": "Pre-Approved — No App Needed",
+    "keyPointsTitle":"Based on:",
+    "keyPoints":[
+      "Jay’s spending pattern",
+      "Account balance",
+      "Previous BNPL completion record"
+    ]
+  },
+  "PlanSelectorSlider":{
+    "title": "Plan Selector Slider",
+    "description":"Plan presets:",
+    "slider":[
+      {"label":"6 months","value":"$353"},
+      {"label":"12 months","value":"$200"},
+      {"label":"18 months","value":"$150"},
+      {"label":"24 months","value":"$100"}
+    ]
+  },
+  "BankOfferIntegration":{
+    "title": "Bank Offer Integration",
+    "description":"Bank provides:",
+    "keyPoints":[
+      "Bundled discount: “Save $15 when you choose 2 or more protections.”"
+    ],
+    "switchText":"Auto-renewal via wallet"
+  },
+  "ExtendedWarranty":{
+    "title": "Extended Warranty",
+    "keyPoints":[
+      "Add 2-year extended warranty",
+      "Cost: $79"
+    ]
+  },
+  "DeviceDamageProtections":{
+    "title": "Device Damage Protections",
+    "keyPoints":[
+      "Covers mechanical or accidental damage",
+      "Cost: $59"
+    ],
+     "switchText":"Device Damage protection "
+  },
+   "TheftProtections":{
+    "title": "Theft Protection",
+    "keyPoints":[
+      "Covers loss due to theft for 12 months",
+      "Cost: $39"
+    ],
+     "switchText":"Theft protection "
+  }
+
+ 
+}
