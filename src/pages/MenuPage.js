@@ -134,6 +134,17 @@ const MenuPage = () => {
   const [showCoffeeLabel, setShowCoffeeLabel] = useState(true);
   const [showShoppingLabel, setShowShoppingLabel] = useState(true);
   const [showHealthCareLabel, setShowHealthCareLabel] = useState(true);
+
+  // Debug mode for dragging label positions
+  const [debugMode, setDebugMode] = useState(false);
+  const [labelPositions, setLabelPositions] = useState({
+    car:        { left: 13.9, top: 76.5 },
+    petrol:     { left: 47.2, top: 85.3 },
+    coffee:     { left: 63.9, top: 88.3 },
+    shopping:   { left: 82, top: 43.5 },
+    healthcare: { left: 17.1, top: 36.6 },
+  });
+  const dragRef = useRef(null);
   const [showSummaryComponents, setShowSummaryComponents] = useState(false);
 
   // ========== NEW CLEAN IMPLEMENTATION ==========
@@ -946,16 +957,26 @@ const MenuPage = () => {
   }, []);
 
   // TEMP: Press 'H' to toggle healthcare frame for quick testing
+  // Press 'D' to toggle debug mode for dragging label positions
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'h' || e.key === 'H') {
         setShowHealthCareComponents(prev => !prev);
         console.log('[DEV] Toggled healthcare frame');
       }
+      if (e.key === 'd' || e.key === 'D') {
+        setDebugMode(prev => {
+          if (prev) {
+            // Exiting debug — log all positions
+            console.log('[DEBUG] Label positions:', JSON.stringify(labelPositions, null, 2));
+          }
+          return !prev;
+        });
+      }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [labelPositions]);
 
   // Preload all split videos when component mounts
   useEffect(() => {
@@ -1887,9 +1908,9 @@ const MenuPage = () => {
               duration={2500}
               style={{
                 position: 'absolute',
-                left: '13.1%',
-                top: '64.5%',
-                transform: 'translate(-50%, 3rem)',
+                left: `${labelPositions.car.left}%`,
+                top: `${labelPositions.car.top}%`,
+                transform: 'translate(-50%, -50%)',
                 width: '14rem',
                 height: 'auto',
                 pointerEvents: 'none',
@@ -1910,9 +1931,9 @@ const MenuPage = () => {
               duration={2500}
               style={{
                 position: 'absolute',
-                left: '52%',
-                top: '75%',
-                transform: 'translate(0, 0)',
+                left: `${labelPositions.petrol.left}%`,
+                top: `${labelPositions.petrol.top}%`,
+                transform: 'translate(-50%, -50%)',
                 width: '18rem',
                 height: 'auto',
                 pointerEvents: 'none',
@@ -1933,9 +1954,9 @@ const MenuPage = () => {
               duration={2500}
               style={{
                 position: 'absolute',
-                left: '64%',
-                top: '76%',
-                transform: 'translate(-50%, 5rem)',
+                left: `${labelPositions.coffee.left}%`,
+                top: `${labelPositions.coffee.top}%`,
+                transform: 'translate(-50%, -50%)',
                 width: '19.4rem',
                 height: 'auto',
                 pointerEvents: 'none',
@@ -1955,9 +1976,9 @@ const MenuPage = () => {
               duration={2500}
               style={{
                 position: 'absolute',
-                left: '82%',
-                top: '39%',
-                transform: 'translate(0, 0)',
+                left: `${labelPositions.shopping.left}%`,
+                top: `${labelPositions.shopping.top}%`,
+                transform: 'translate(-50%, -50%)',
                 width: '17rem',
                 height: 'auto',
                 pointerEvents: 'none',
@@ -1977,9 +1998,9 @@ const MenuPage = () => {
               duration={2500}
               style={{
                 position: 'absolute',
-                left: '17%',
-                top: '24%',
-                transform: 'translate(-50%, 3rem)',
+                left: `${labelPositions.healthcare.left}%`,
+                top: `${labelPositions.healthcare.top}%`,
+                transform: 'translate(-50%, -50%)',
                 width: '14rem',
                 height: 'auto',
                 pointerEvents: 'none',
@@ -2026,6 +2047,94 @@ const MenuPage = () => {
             onMouseLeave={(e) => e.currentTarget.style.opacity = 0.9}
           />
         </>
+      )}
+
+      {/* Debug overlay — press D to toggle, drag markers to reposition labels */}
+      {debugMode && (
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 9999,
+          pointerEvents: 'none',
+        }}>
+          {/* Debug banner */}
+          <div style={{
+            position: 'absolute', top: 10, left: '50%', transform: 'translateX(-50%)',
+            background: 'rgba(255,0,0,0.85)', color: '#fff', padding: '6px 20px',
+            borderRadius: '6px', fontSize: '14px', fontWeight: 700, pointerEvents: 'none',
+            zIndex: 10000,
+          }}>
+            DEBUG MODE — Drag label markers — Press D to exit & log positions
+          </div>
+
+          {/* Draggable markers for each label */}
+          {Object.entries(labelPositions).map(([key, pos]) => {
+            const colors = {
+              car: '#FFE600', petrol: '#00BFFF', coffee: '#FF8C00',
+              shopping: '#00FF7F', healthcare: '#FF69B4',
+            };
+            return (
+              <div
+                key={key}
+                style={{
+                  position: 'absolute',
+                  left: `${pos.left}%`,
+                  top: `${pos.top}%`,
+                  transform: 'translate(-50%, -50%)',
+                  width: '24px', height: '24px',
+                  background: colors[key] || '#fff',
+                  border: '3px solid #fff',
+                  borderRadius: '50%',
+                  cursor: 'grab',
+                  pointerEvents: 'auto',
+                  zIndex: 10001,
+                  boxShadow: '0 0 10px rgba(0,0,0,0.5)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  const el = e.currentTarget;
+                  el.style.cursor = 'grabbing';
+                  const parent = el.parentElement;
+                  const rect = parent.getBoundingClientRect();
+                  const onMove = (ev) => {
+                    const newLeft = ((ev.clientX - rect.left) / rect.width) * 100;
+                    const newTop = ((ev.clientY - rect.top) / rect.height) * 100;
+                    setLabelPositions(prev => ({
+                      ...prev,
+                      [key]: {
+                        left: Math.round(newLeft * 10) / 10,
+                        top: Math.round(newTop * 10) / 10,
+                      }
+                    }));
+                  };
+                  const onUp = () => {
+                    el.style.cursor = 'grab';
+                    window.removeEventListener('mousemove', onMove);
+                    window.removeEventListener('mouseup', onUp);
+                  };
+                  window.addEventListener('mousemove', onMove);
+                  window.addEventListener('mouseup', onUp);
+                }}
+              >
+                <span style={{ fontSize: '8px', fontWeight: 700, color: '#000', userSelect: 'none' }}>
+                  {key[0].toUpperCase()}
+                </span>
+              </div>
+            );
+          })}
+
+          {/* Position readout */}
+          <div style={{
+            position: 'absolute', bottom: 10, left: '50%', transform: 'translateX(-50%)',
+            background: 'rgba(0,0,0,0.85)', color: '#0f0', padding: '8px 16px',
+            borderRadius: '6px', fontSize: '11px', fontFamily: 'monospace',
+            pointerEvents: 'none', whiteSpace: 'pre', zIndex: 10000,
+          }}>
+            {Object.entries(labelPositions).map(([k, v]) =>
+              `${k.padEnd(12)} left: ${v.left}%  top: ${v.top}%`
+            ).join('\n')}
+          </div>
+        </div>
       )}
 
     </Box>
